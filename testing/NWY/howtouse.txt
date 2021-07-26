@@ -1,0 +1,18 @@
+	
+		invoke GetDlgItem, hWnd, 1098
+		mov h,eax
+		invoke drawYolo, h, Wx, Wy
+
+	invoke stopYolo
+
+h		DWORD	?
+
+include abt.asm
+
+
+
+
+
+
+;;;;scroll2
+invoke	CreateThread,0,0,addr StartAddress,0,0,esp

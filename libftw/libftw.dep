@@ -1,0 +1,6 @@
+# Microsoft Developer Studio Generated Dependency File, included by libftw.mak
+
+.\libftw.cpp : \
+	"..\..\..\..\..\program files (x86)\microsoft visual studio\vc98\include\basetsd.h"\
+	".\StdAfx.h"\
+	

@@ -1,0 +1,103 @@
+;: =====================================================
+;: Vicious DLL Injector, ver.1.0
+;: © Jan Hodermarsky (HardC0re, JohnHoder), 2015-2017
+;: =====================================================
+
+#include "c:\\masm32\\include\\resource.h"
+LANGUAGE 0, 0
+
+#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1
+#define RT_MANIFEST 24
+
+#define IDI_ICON 200
+#define IDD_MAIN 100
+#define IDD_ABOUT 700
+#define IDB_BACKGROUND 8000
+#define IDC_ABOUT 1787
+#define IDC_INJECT 1788
+#define IDC_BCK 1010
+#define IDC_COPYRIGHT 1098
+#define IDR_MUSIC 500
+#define IDC_TEST 7777
+#define IDC_INFO 20
+#define IDC_CLOSEX 30
+#define IDC_SOUND 1006
+#define IDC_PROC 555
+#define IDC_SELPROC 556
+
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID MANIFEST DISCARDABLE ".\\res\\manifest.xml"
+IDR_MUSIC RCDATA DISCARDABLE ".\\res\\sfx\\tunex.xm"
+IDI_ICON ICON DISCARDABLE ".\\res\\gfx\\favicon.ico"
+IDB_BACKGROUND BITMAP DISCARDABLE "res\\gfx\\bg.bmp"
+
+701 RCDATA DISCARDABLE ".\\res\\gfx\\exit-down.png"
+702 RCDATA DISCARDABLE ".\\res\\gfx\\exit-over.png"
+703 RCDATA DISCARDABLE ".\\res\\gfx\\exit-up.png"
+704 RCDATA DISCARDABLE ".\\res\\gfx\\xon.png"
+705 RCDATA DISCARDABLE ".\\res\\gfx\\xoff.png"
+706 RCDATA DISCARDABLE ".\\res\\gfx\\sound-on.png"
+707 RCDATA DISCARDABLE ".\\res\\gfx\\sound-off.png"
+
+IDD_MAIN DIALOGEX 0,0,200,200
+FONT 8,"MS Sans Serif"
+STYLE 0x90000800
+EXSTYLE 0x00000000
+BEGIN
+	;CONTROL BACKGROUND, IDC_STATIC, STATIC, SS_BITMAP | SS_CENTERIMAGE,0,0,207,275,0x00000000
+	;CONTROL "text", 44441, "Static", 0x10000001, 29,20,144,12, WS_CHILD | WS_VISIBLE | BS_GROUPBOX | WS_THICKFRAME
+	CONTROL "Choose process", -1, BUTTON, BS_GROUPBOX | WS_CHILD | WS_VISIBLE, 28,58,148,25
+	CONTROL " Proc not selected  ...", IDC_PROC, STATIC, ES_READONLY | ES_AUTOHSCROLL, 32, 68, 100, 10 ;WS_TABSTOP  ;STATIC OR EDIT
+	PUSHBUTTON "Browse", IDC_SELPROC, 135,68, 36,10, BS_OWNERDRAW
+	PUSHBUTTON "Inject!", IDC_INJECT, 65,178,77,17, BS_OWNERDRAW
+	PUSHBUTTON "A propos", IDC_ABOUT, 75,225,57,12, BS_OWNERDRAW
+	;PUSHBUTTON "Testing", IDC_TEST, 63,175,77,17, BS_OWNERDRAW
+	CONTROL "©  2017 HardC0re & Team XTX", IDC_COPYRIGHT, "Edit", 0x58000801, 3,257,182,13, BS_OWNERDRAW
+	;CONTROL "text", 5000, "Static", 0x10000001, 45,225,1,1, BS_OWNERDRAW
+	AUTOCHECKBOX "Sound", IDC_SOUND, 5,243,40,10, WS_CHILD | BS_AUTOCHECKBOX | WS_VISIBLE 
+END
+
+IDD_ABOUT DIALOGEX 0,0,0,0
+FONT 8,"MS Sans Serif"
+STYLE 0x900a0800
+EXSTYLE 0x00000088
+BEGIN
+END
+
+111 DIALOGEX 0, 0, 170, 126
+FONT 8,"COURIER NEW" ;Tahoma
+STYLE WS_POPUP | DS_CENTER
+EXSTYLE 0x00000088
+BEGIN
+	CONTROL "",407,"Static",0x10000001,4,4,162,100,0x00000000
+	PUSHBUTTON "&Exit", 408, 60, 108, 50, 12, BS_OWNERDRAW
+END
+
+;file info
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEOS          VOS_NT_WINDOWS32
+FILETYPE        VFT_APP
+BEGIN
+	BLOCK "StringFileInfo"
+	BEGIN
+		BLOCK "040904E4"
+		BEGIN
+			;VALUE "CompanyName",     "Vicious Productions\000"
+			VALUE "FileDescription",  "Vicious DLL Injector\000"
+			VALUE "FileVersion",      "1.0\000"
+			VALUE "LegalCopyright",   "\251 2017 Jan Hodermarsky\000"
+			VALUE "InternalName",     "Vicious DLL Injector.exe\0"
+			VALUE "OriginalFilename", "Vicious DLL Injector.exe\000"
+			VALUE "ProductName",      "Vicious DLL Injector\000"
+			VALUE "ProductVersion",   "1.0.0.0\000"
+		END
+	END
+	BLOCK "VarFileInfo"
+	BEGIN
+		VALUE "Translation", 0x409, 0x4E4
+	END
+END
+
+
