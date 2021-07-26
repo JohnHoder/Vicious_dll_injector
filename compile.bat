@@ -23,7 +23,7 @@ if errorlevel 1 goto errlink
 goto TheEnd
 
 :nores
-echo "Linking resources ..."
+echo "Linking without resources ..."
 link.exe /SUBSYSTEM:WINDOWS .\injector.obj
 if errorlevel 1 goto errlink
 goto TheEnd
