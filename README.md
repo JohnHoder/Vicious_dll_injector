@@ -22,7 +22,9 @@ Acknowledgments
 ---------------
 
 This program makes use of btnt.inc library from Xylitol (https://github.com/Xyl2k/Xylitol-MASM32-snippets)
+
 This program makes use of mfmPlayer library.
+
 This program makes use of pnglib library written by Thomas Bleeker.
 
 Shoutout to Sp0ke for his scroll algorythm and AZED for the SFX.
